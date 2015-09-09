@@ -8,5 +8,15 @@
 <body>
   <h1> Welcome to Stoxy</h1>
   <h3> Search for a stock symbol or company to view price history</h3>
+
+  <% @stocks.each do |stock| %>
+  <td>
+  
+  
+    <tr> <a href="#"> <%= stock.company %> </a></tr> <tr> <%= stock.symbol %> </tr>
+  <% end %>
+  </td>
 </body>
+
+
 </html>

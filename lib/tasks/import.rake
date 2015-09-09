@@ -6,10 +6,7 @@ task :import => [:environment] do
   file = "db/companylist.csv"
 
   CSV.foreach(file, :headers => true) do |row|
-    Team.create {
-      :company => row[2],
-      :symbol => row[1]
-    }
+    Stock.create(company: row[1], symbol: row[0])
   end
 
 end
