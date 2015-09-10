@@ -10,5 +10,11 @@ class Stock < ActiveRecord::Base
     # where(:title, query) -> This would return an exact match of the query
     where("company like ?", "%#{query}%") 
   end
-  
+
+  # method for returning current value by sending the symbol of current stock to YahooFinance
+  def get_value(symbol)
+  	yahoo_client = YahooFinance::Client.new
+  	data = yahoo_client.quotes([symbol], [:ask])
+  	data[0].ask
+  end
 end

@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #to get our stock data
 gem 'stock_quote'
+gem 'yahoo-finance'
 
 #to make our searches
 gem 'searchkick'
