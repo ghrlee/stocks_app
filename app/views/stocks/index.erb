@@ -4,6 +4,9 @@
 <html>
 <head>
 	<title>The Stocks App</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -11,21 +14,15 @@
 	  <h1> Welcome to Stoxy</h1>
 	  <h3> Search for a stock symbol or company to view price history</h3>
 
-	<form class="form-inline" role="form">
-	  <div class="form-group">
-	    <label for="searchbox">Company or symbol:</label>
-	    <input type="text" class="form-control">
-	  </div>
-	  <button type="submit" class="btn btn-default">Submit</button>
-	</form>
+    <% if @stocks.count < 8 %>
+			<% @stocks.each do |stock| %>
+			  <div class="stock">
+			    <h3 class="stocks-company"><%= link_to stock.company, stock %></h3>
+			    <p class="stock-symbol"><%= stock.symbol %></p>
+			  </div>
+			<% end %>
+		<% end %>
 
-	  <% @stocks.each do |stock| %>
-	  <td>
-	  
-	  
-	    <tr> <a href="#"> <%= stock.company %> </a></tr> <tr> <%= stock.symbol %> </tr>
-	  <% end %>
-	  </td>
 
   </div>
 </body>

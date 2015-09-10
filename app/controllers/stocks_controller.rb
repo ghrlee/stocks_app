@@ -1,10 +1,15 @@
 class StocksController < ApplicationController
 
   def index
-  	@stocks = Stock.all
+    if params[:search]
+      @stocks = Stock.search(params[:search]).order("created_at DESC")
+    else
+      @stocks = Stock.order("created_at DESC")
+    end
   end
 
   def show
+    @stock = Stock.find(params[:id])
   end
 
   private
