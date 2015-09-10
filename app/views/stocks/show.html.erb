@@ -1,4 +1,5 @@
 <h1> Show page :) </h1>
 
 <h3> Company name: <%= @stock.company %> Symbol: <%= @stock.symbol %></h3>
-<h3> Current value: <%= @stock.get_value(@stock.symbol) %>
+<h3> Current value: <%= @stock.get_value(@stock.symbol) %></h3><br>
+<img src= <%= @stock.graph_data %>>
