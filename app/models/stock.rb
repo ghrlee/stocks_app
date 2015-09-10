@@ -21,10 +21,12 @@ class Stock < ActiveRecord::Base
   	data[0].ask
   end
 
-  def get_data
+  def get_data(symbol)
   	yahoo_client = YahooFinance::Client.new
   	data_array = []
-    data = yahoo_client.historical_quotes("FLWS", { start_date: Time::now-(24*60*60*30), end_date: Time::now }) # 10 days worth of data
+    data = yahoo_client.historical_quotes(symbol.to_s, 
+    			{ start_date: Time::now-(24*60*60*30), 
+    			  end_date: Time::now })
     data.each do |get_data|
     	day_price = get_data.close
     	data_array << day_price.to_f
@@ -32,10 +34,10 @@ class Stock < ActiveRecord::Base
     data_array
   end
 
-  def graph_data
+  def graph_data(symbol)
   	Gchart.line(  
   						:size => '300x200', 
-              :data => self.get_data,
+              :data => self.get_data(symbol),
               :axis_range => [nil, [50,125,5]],
               )
   end
