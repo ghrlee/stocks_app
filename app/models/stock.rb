@@ -47,7 +47,7 @@ class Stock < ActiveRecord::Base
     great_min = data_great.min - 0.5
     great_max = data_great.max + 0.5
     great_avg = (data_great.inject{|sum,x| sum + x })/30
-    great_ary = [great_min.round(2), great_avg.round(2), great_max.round(2)]
+    great_ary = [great_min.round(2), great_max.round(2)]
 
     
     Gchart.line(:data => data_great, 
@@ -55,6 +55,7 @@ class Stock < ActiveRecord::Base
     						:max_value => great_max,
     						:axis_with_labels => ['y','x'],
                 :axis_labels => [great_ary,['30 days ago|Today']])
+
 
   end
 end
