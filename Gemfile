@@ -18,7 +18,7 @@ gem 'yahoo-finance'
 gem 'searchkick'
 
 #to make our charts
-gem 'googlecharts', '~> 1.6.10'
+gem 'googlecharts', '~> 1.6.12'
 
 ##bootstrap and simpleform
 gem 'bootstrap-sass', '~> 3.2.0.2'
